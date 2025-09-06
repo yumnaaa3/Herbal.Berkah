@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, user-scalable=yes" />
+    <title>Toko Herbal - Sehat Alami</title>
+    <meta name="description" content="Toko herbal obat-obatan alami: jamu, teh, minyak, suplemen. Sehat alami berkelas." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container header-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">🌿</div>
+          <div class="brand-text">
+            <h1 class="title">HerbalBerkah</h1>
+            <p class="subtitle"></p>
+          </div>
+        </div>
+
+        <div class="header-actions">
+          <div class="searchbar">
+            <input id="searchInput" type="search" placeholder="Cari produk herbal..." aria-label="Cari produk" />
+            <button id="clearSearch" class="ghost" aria-label="Bersihkan pencarian">✕</button>
+          </div>
+          <button id="cartButton" class="cart-button" aria-haspopup="dialog" aria-controls="cartModal">
+            <span class="icon" aria-hidden="true">🧺</span>
+            <span>Keranjang</span>
+            <span class="badge" id="cartCount">0</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-text">
+            <h2>Obat Herbal Pilihan Kita</h2>
+            <p>Temukan Berbagai Macam Madu, dan suplemen alami berkualitas. Diracik dengan sentuhan tradisi dan ilmu modern.</p>
+            <div class="hero-cta">
+              <a href="#produk" class="btn primary">Belanja Sekarang</a>
+              <a href="#kategori" class="btn ghost">Jelajahi Kategori</a>
+            </div>
+          </div>
+          <div class="hero-art" aria-hidden="true">
+            <img class="hero-img" src="images/hero.jpg" alt="Herbal pilihan" />
+            <div class="leaf leaf-a"></div>
+            <div class="leaf leaf-b"></div>
+            <div class="leaf leaf-c"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="benefits">
+        <div class="container benefits-grid">
+          <article class="benefit reveal">
+            <div class="benefit-icon">💚</div>
+            <h4>Alami & Aman</h4>
+            <p>Dipilih dari bahan herbal berkualitas dengan standar kebersihan terjaga.</p>
+          </article>
+          <article class="benefit reveal">
+            <div class="benefit-icon">⚗️</div>
+            <h4>Racikan Modern</h4>
+            <p>Formulasi memadukan kearifan jamu Nusantara dan riset masa kini.</p>
+          </article>
+          <article class="benefit reveal">
+            <div class="benefit-icon">🚚</div>
+            <h4>Pengiriman Cepat</h4>
+            <p>Pengiriman kilat dengan pelacakan realtime ke berbagai kota.</p>
+          </article>
+          <article class="benefit reveal">
+            <div class="benefit-icon">⭐</div>
+            <h4>Terpercaya</h4>
+            <p>Ribuan pelanggan puas, rating tinggi untuk produk favorit.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="kategori" class="categories">
+        <div class="container">
+          <div class="section-head">
+            <h3>Kategori</h3>
+            <div class="chips" id="categoryChips" role="tablist" aria-label="Filter kategori">
+              <!-- Chips diisi via JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="produk" class="products">
+        <div class="container">
+          <div class="section-head">
+            <h3>Produk Unggulan</h3>
+            <div class="sorter">
+              <label for="sortSelect">Urutkan</label>
+              <select id="sortSelect" aria-label="Urutkan produk">
+                <option value="popular">Paling Populer</option>
+                <option value="price_asc">Harga Terendah</option>
+                <option value="price_desc">Harga Tertinggi</option>
+                <option value="name_asc">Nama A-Z</option>
+              </select>
+            </div>
+          </div>
+
+          <div id="productGrid" class="grid">
+            <!-- Kartu produk diisi via JS -->
+          </div>
+        </div>
+      </section>
+      
+      <section class="newsletter reveal">
+        <div class="container newsletter-inner">
+          <div>
+            <h3>Dapatkan Tips Sehat & Promo</h3>
+            <p class="muted">Berlangganan newsletter kami. Kami kirimkan 1-2x per bulan.</p>
+          </div>
+          <form id="newsletterForm" class="newsletter-form" autocomplete="on">
+            <input type="email" id="newsletterEmail" required placeholder="Email Anda" aria-label="Email" />
+            <button class="btn primary" type="submit">Berlangganan</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <strong>Herbalia</strong>
+          <p>Obat herbal terpercaya. © <span id="year"></span></p>
+        </div>
+        <nav class="footer-nav" aria-label="Footer">
+          <a href="#produk">Produk</a>
+          <a href="#kategori">Kategori</a>
+          <a href="#" id="toTop">Ke Atas ↑</a>
+        </nav>
+      </div>
+      
+      <div class="contact-section">
+        <div class="container">
+          <div class="contact-inner">
+            <div class="contact-info">
+              <h4>Butuh Bantuan?</h4>
+              <p>Ada pertanyaan tentang produk herbal kami? Chat langsung dengan tim customer service.</p>
+            </div>
+            <a href="https://wa.me/6285604204229?text=Halo%2C%20saya%20tertarik%20dengan%20produk%20herbal%20Anda.%20Bisa%20bantu%20saya%3F" 
+               class="whatsapp-btn" target="_blank" rel="noopener">
+              <span class="whatsapp-icon">💬</span>
+              <div class="whatsapp-text">
+                <strong>Chat WhatsApp</strong>
+                <span>0856-0420-4229</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <dialog id="cartModal" class="cart-modal" aria-label="Keranjang Belanja">
+      <div class="cart-header">
+        <h4>Keranjang</h4>
+        <button id="closeCart" class="icon-btn" aria-label="Tutup">✕</button>
+      </div>
+      <div id="cartItems" class="cart-items" role="list">
+        <!-- Items via JS -->
+      </div>
+      <div class="cart-footer">
+        <div class="totals">
+          <span>Subtotal</span>
+          <strong id="cartSubtotal">Rp0</strong>
+        </div>
+        <button id="checkoutBtn" class="btn primary block">Checkout</button>
+      </div>
+    </dialog>
+
+    <!-- Floating Cart CTA -->
+    <button id="floatingCart" class="floating-cart" aria-label="Buka keranjang">
+      🧺 <span id="floatingCount" class="badge">0</span>
+    </button>
+
+    <!-- Toasts -->
+    <div id="toastWrap" class="toast-wrap" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Product Detail Modal -->
+    <dialog id="productModal" class="product-modal" aria-label="Detail Produk">
+      <div class="pm-header">
+        <h4 id="pmTitle">Detail Produk</h4>
+        <button id="pmClose" class="icon-btn" aria-label="Tutup">✕</button>
+      </div>
+      <div class="pm-body">
+        <div class="pm-media">
+          <img id="pmImage" alt="Gambar produk" />
+        </div>
+        <div class="pm-info">
+          <div class="pm-top">
+            <span id="pmCategory" class="chip" aria-label="Kategori"></span>
+            <span id="pmRating" class="pm-rating">⭐ 0.0</span>
+          </div>
+          <h3 id="pmName"></h3>
+          <div class="pm-price" id="pmPrice">Rp0</div>
+          <p class="pm-desc" id="pmDesc"></p>
+          <ul id="pmBenefits" class="pm-benefits"></ul>
+          <div class="pm-actions">
+            <div class="qty" role="group" aria-label="Ubah jumlah">
+              <button id="pmDec" aria-label="Kurangi">−</button>
+              <span id="pmQty">1</span>
+              <button id="pmInc" aria-label="Tambah">+</button>
+            </div>
+            <button id="pmAdd" class="btn primary">Tambah ke Keranjang</button>
+          </div>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="script.js"></script>
+  </body>
+  </html>
+
+

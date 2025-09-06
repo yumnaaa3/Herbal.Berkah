@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pemesanan Berhasil - Herbalia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      .success-wrap { min-height: 100vh; display: grid; place-items: center; padding: 24px; background: radial-gradient(600px 400px at 70% -10%, rgba(60,171,96,.14), transparent 50%), var(--bg); }
+      .success-card { width: min(720px, 96%); border: 1px solid rgba(102,195,128,.22); border-radius: 18px; background: linear-gradient(180deg, #0f1416, #0e1214); box-shadow: var(--shadow-1); padding: 20px; display: grid; gap: 14px; text-align: center; }
+      .success-emoji { font-size: 42px; }
+      .success-title { margin: 0; font-size: clamp(24px, 4vw, 34px); font-weight: 800; }
+      .success-meta { color: var(--text-dim); margin: 0; }
+      .success-actions { display: flex; justify-content: center; gap: 10px; margin-top: 6px; }
+      .muted-note { color: var(--text-dim); font-size: 13px; }
+    </style>
+  </head>
+  <body>
+    <div class="success-wrap">
+      <div class="success-card">
+        <div class="success-emoji">✅</div>
+        <h1 class="success-title">Terima kasih, pesanan Anda berhasil!</h1>
+        <p class="success-meta">Nomor pesanan: <strong id="orderId">-</strong></p>
+        <p class="success-meta">Subtotal: <strong id="orderTotal">Rp0</strong> • Item: <strong id="orderItems">0</strong></p>
+        <div class="success-actions">
+          <a class="btn primary" href="index.html">Kembali Belanja</a>
+          <a id="waShare" class="btn" target="_blank" rel="noopener">Bagikan via WhatsApp</a>
+        </div>
+        <p class="muted-note">Ringkasan ini tersimpan di perangkat Anda dan tidak dikirim ke server mana pun.</p>
+      </div>
+    </div>
+
+    <script>
+      function formatIDR(n){return new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(n||0)}
+      const last = JSON.parse(localStorage.getItem('lastOrder')||'{}');
+      const ts = last.ts || Date.now();
+      const orderId = 'HB-' + ts.toString().slice(-8);
+      document.getElementById('orderId').textContent = orderId;
+      document.getElementById('orderTotal').textContent = formatIDR(last.subtotal||0);
+      document.getElementById('orderItems').textContent = (last.items? last.items.reduce((a,x)=>a+Number(x.qty||0),0):0);
+      const msg = encodeURIComponent(`Halo, saya sudah checkout di Herbalia.\nNomor Pesanan: ${orderId}\nSubtotal: ${formatIDR(last.subtotal||0)}\nTerima kasih!`);
+      document.getElementById('waShare').href = 'https://wa.me/6285604204229?text=' + msg;
+    </script>
+  </body>
+  </html>
+
+
+
